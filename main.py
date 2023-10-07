@@ -17,9 +17,10 @@ def process_and_return(file_path):
   input_data = np.expand_dims(resized_image, axis=0)
   input_data=input_data/255.0
   model = load_model('modell.h5')
+  classes = ["airplane", "automobile" , "bird", "cat", "deer", "dog", "frog", "horse", "ship",  "truck"]
   predictions=model.predict(input_data)
-  return predictions.argmax()
+  return classes[predictions.argmax()]
   
 
-classes = ["airplane", "automobile" , "bird", "cat", "deer", "dog", "frog", "horse", "ship",  "truck"]
-print("Class of the Image : ", classes[process_and_return(file_path)])
+# classes = ["airplane", "automobile" , "bird", "cat", "deer", "dog", "frog", "horse", "ship",  "truck"]
+# print("Class of the Image : ", classes[process_and_return(file_path)])
